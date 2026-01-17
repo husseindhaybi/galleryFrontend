@@ -86,6 +86,9 @@ const ImageUploader = ({ productId, onImagesChange }) => {
         formData.append('images', preview.file);
       });
 
+      console.log('Uploading images to:', `/api/uploads/product-images/${productId}`);
+      console.log('Number of images:', previews.length);
+
       const response = await axios.post(
         `/api/uploads/product-images/${productId}`,
         formData,
@@ -96,6 +99,8 @@ const ImageUploader = ({ productId, onImagesChange }) => {
           }
         }
       );
+
+      console.log('Upload response:', response.data);
 
       if (response.data.success) {
         Swal.fire({
@@ -110,10 +115,24 @@ const ImageUploader = ({ productId, onImagesChange }) => {
         }
       }
     } catch (error) {
+      console.error('Upload error:', error);
+      
+      // عرض تفاصيل الـ error بـ alert للموبايل
+      const errorDetails = {
+        status: error.response?.status,
+        message: error.response?.data?.error || error.message,
+        data: error.response?.data
+      };
+      
+      alert('Upload Error:\n' + JSON.stringify(errorDetails, null, 2));
+
       Swal.fire({
         icon: 'error',
         title: 'Upload Failed',
-        text: error.response?.data?.error || 'Failed to upload images',
+        html: `
+          <p><strong>Error:</strong> ${error.response?.data?.error || error.message}</p>
+          <p><strong>Status:</strong> ${error.response?.status || 'Unknown'}</p>
+        `,
         confirmButtonText: 'OK'
       });
     } finally {
