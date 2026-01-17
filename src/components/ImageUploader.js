@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import { FaStar, FaTimes, FaUpload } from 'react-icons/fa';
+import { FaCamera, FaStar, FaTimes, FaUpload } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './ImageUploader.css';
 
@@ -25,15 +25,13 @@ const ImageUploader = ({ productId, onImagesChange }) => {
 
     if (validFiles.length !== files.length) {
       Swal.fire({
-  icon: 'warning',
-  title: 'Some Files Were Skipped',
-  text: 'Only images under 5MB are allowed.',
-  confirmButtonText: 'OK'
-});
-
+        icon: 'warning',
+        title: 'Some Files Were Skipped',
+        text: 'Only images under 5MB are allowed.',
+        confirmButtonText: 'OK'
+      });
     }
 
-   
     const newPreviews = validFiles.map(file => ({
       file,
       preview: URL.createObjectURL(file),
@@ -70,12 +68,11 @@ const ImageUploader = ({ productId, onImagesChange }) => {
   const uploadImages = async () => {
     if (previews.length === 0) {
       Swal.fire({
-  icon: 'warning',
-  title: 'No Images Selected',
-  text: 'Please select at least one image',
-  confirmButtonText: 'OK'
-});
-
+        icon: 'warning',
+        title: 'No Images Selected',
+        text: 'Please select at least one image',
+        confirmButtonText: 'OK'
+      });
       return;
     }
 
@@ -102,12 +99,11 @@ const ImageUploader = ({ productId, onImagesChange }) => {
 
       if (response.data.success) {
         Swal.fire({
-  icon: 'success',
-  title: 'Upload Complete!',
-  text: `${response.data.images.length} images uploaded successfully!`,
-  confirmButtonText: 'OK'
-});
-
+          icon: 'success',
+          title: 'Upload Complete!',
+          text: `${response.data.images.length} images uploaded successfully!`,
+          confirmButtonText: 'OK'
+        });
         setPreviews([]);
         if (onImagesChange) {
           onImagesChange(response.data.images);
@@ -115,12 +111,11 @@ const ImageUploader = ({ productId, onImagesChange }) => {
       }
     } catch (error) {
       Swal.fire({
-  icon: 'error',
-  title: 'Upload Failed',
-  text: error.response?.data?.error || 'Failed to upload images',
-  confirmButtonText: 'OK'
-});
-
+        icon: 'error',
+        title: 'Upload Failed',
+        text: error.response?.data?.error || 'Failed to upload images',
+        confirmButtonText: 'OK'
+      });
     } finally {
       setUploading(false);
     }
@@ -128,8 +123,10 @@ const ImageUploader = ({ productId, onImagesChange }) => {
 
   return (
     <div className="image-uploader">
+      
+      {/* Drag & Drop Area - للكمبيوتر */}
       <div 
-        className={`upload-area ${dragActive ? 'drag-active' : ''}`}
+        className={`upload-area d-none d-md-flex ${dragActive ? 'drag-active' : ''}`}
         onDragEnter={handleDrag}
         onDragOver={handleDrag}
         onDragLeave={handleDrag}
@@ -140,18 +137,37 @@ const ImageUploader = ({ productId, onImagesChange }) => {
         <h3>Drag & Drop Images Here</h3>
         <p>or click to browse</p>
         <span className="upload-note">PNG, JPG, GIF, WEBP (Max 5MB each)</span>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleFileSelect}
-          style={{ display: 'none' }}
-        />
       </div>
 
+      {/* Mobile Button - للموبايل */}
+      <div className="d-md-none">
+        <button
+          type="button"
+          className="btn btn-primary btn-lg w-100 py-4 d-flex align-items-center justify-content-center gap-3"
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <FaCamera size={24} />
+          <span>Choose Images from Gallery</span>
+        </button>
+        <p className="text-center text-muted mt-2 small">
+          PNG, JPG, GIF, WEBP (Max 5MB each)
+        </p>
+      </div>
+
+      {/* Hidden File Input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
+        capture="environment"
+        multiple
+        onChange={handleFileSelect}
+        style={{ display: 'none' }}
+        aria-label="Upload product images"
+      />
+
       {previews.length > 0 && (
-        <div className="previews-section">
+        <div className="previews-section mt-4">
           <h3>Selected Images ({previews.length})</h3>
           <div className="previews-grid">
             {previews.map((preview, index) => (
@@ -174,7 +190,7 @@ const ImageUploader = ({ productId, onImagesChange }) => {
           </div>
 
           <button
-            className="upload-btn"
+            className="btn btn-success btn-lg w-100 mt-3"
             onClick={uploadImages}
             disabled={uploading}
           >
