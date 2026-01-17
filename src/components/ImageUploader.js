@@ -147,7 +147,7 @@ const ImageUploader = ({ productId, onImagesChange }) => {
           onClick={() => fileInputRef.current?.click()}
         >
           <FaCamera size={24} />
-          <span>Choose Images from Gallery</span>
+          <span>Choose Images</span>
         </button>
         <p className="text-center text-muted mt-2 small">
           PNG, JPG, GIF, WEBP (Max 5MB each)
@@ -158,8 +158,7 @@ const ImageUploader = ({ productId, onImagesChange }) => {
       <input
         ref={fileInputRef}
         type="file"
-        accept="image/png,image/jpeg,image/jpg,image/gif,image/webp"
-        capture="environment"
+        accept="image/*"
         multiple
         onChange={handleFileSelect}
         style={{ display: 'none' }}
