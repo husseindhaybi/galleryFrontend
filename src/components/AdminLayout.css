@@ -1,0 +1,33 @@
+/* ========== Admin Layout Styles ========== */
+/* File: src/components/AdminLayout.css */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.admin-content {
+  flex: 1;
+  margin-left: 240px; /* يطابق عرض الـ sidebar */
+  padding: 30px;
+  min-height: 100vh;
+  width: calc(100% - 240px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-content {
+    margin-left: 70px;
+    padding: 20px;
+    width: calc(100% - 70px);
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-content {
+    margin-left: 60px;
+    padding: 15px;
+    width: calc(100% - 60px);
+  }
+}

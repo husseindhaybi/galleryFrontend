@@ -1,0 +1,43 @@
+.hero {
+  position: relative;
+}
+
+/* Overlay أخف وأنيق */
+.hero-overlay {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.35)
+  );
+}
+
+/* تحسين وضوح النص */
+.hero-title,
+.hero-subtitle {
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* لون البراند */
+.text-nut-brown {
+  color: #8b5a2b;
+}
+
+/* زر البراند */
+.btn-nut-brown {
+  background-color: #8b5a2b;
+  border: none;
+}
+
+.btn-nut-brown:hover {
+  background-color: #734823;
+}
+
+/* زر Outline */
+.btn-outline-nut-brown {
+  border: 2px solid #8b5a2b;
+  color: #8b5a2b;
+}
+
+.btn-outline-nut-brown:hover {
+  background-color: #8b5a2b;
+  color: #fff;
+}

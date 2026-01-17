@@ -1,0 +1,73 @@
+.floating-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1050;
+}
+
+.floating-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.floating-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+}
+
+.maps-btn {
+  background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%);
+}
+
+.maps-btn:hover {
+  background: linear-gradient(135deg, #C5221F 0%, #A50E0E 100%);
+}
+
+/* Animation */
+.floating-btn {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+  }
+}

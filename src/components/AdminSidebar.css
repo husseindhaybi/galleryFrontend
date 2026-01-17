@@ -1,0 +1,192 @@
+/* ========== Admin Sidebar Styles ========== */
+/* File: src/components/AdminSidebar.css */
+
+.admin-sidebar {
+  width: 240px; /* عرض مناسب */
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== Sidebar Header ==================== */
+.sidebar-header {
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo svg {
+  font-size: 28px;
+  color: white;
+}
+
+.logo h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.logo p {
+  font-size: 11px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==================== Sidebar Navigation ==================== */
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-left-color: white;
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-left-color: white;
+  font-weight: 600;
+}
+
+.nav-item svg {
+  font-size: 16px;
+  min-width: 16px;
+}
+
+/* ==================== Sidebar Footer ==================== */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-secondary,
+.btn-logout {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-logout {
+  background: rgba(231, 76, 60, 0.2);
+  color: white;
+}
+
+.btn-logout:hover {
+  background: rgba(231, 76, 60, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ==================== Scrollbar ==================== */
+.admin-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 70px;
+  }
+
+  .sidebar-header {
+    padding: 16px 8px;
+  }
+
+  .logo h2,
+  .logo p {
+    display: none;
+  }
+
+  .logo {
+    justify-content: center;
+  }
+
+  .nav-item {
+    padding: 12px 8px;
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .nav-item svg {
+    font-size: 20px;
+  }
+
+  .sidebar-footer {
+    padding: 12px 8px;
+  }
+
+  .btn-secondary span,
+  .btn-logout span {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-sidebar {
+    width: 60px;
+  }
+}

@@ -1,0 +1,93 @@
+/* ========== Categories Management Styles ========== */
+/* File: src/pages/admin/CategoriesManagement.css */
+
+.categories-management {
+  width: 100%;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.category-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.category-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.category-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-actions button {
+  flex: 1;
+}
+
+/* Empty State */
+.categories-grid .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-state h3 {
+  margin: 0 0 12px 0;
+  color: #475569;
+  font-size: 22px;
+}
+
+.empty-state p {
+  margin: 0 0 24px 0;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+}
