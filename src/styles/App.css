@@ -1227,3 +1227,85 @@ main {
   min-height: calc(100vh - 70px);
 }
 }
+
+
+/* ====================================
+   Nut Brown Theme Override
+==================================== */
+
+:root {
+  --nut-brown-primary: #A47148;
+  --nut-brown-secondary: #8B5A2B;
+  --nut-brown-dark: #6F3E1D;
+  --cream: #FFF8F0;
+}
+
+/* Nut Brown Backgrounds */
+.bg-nut-brown {
+  background: linear-gradient(135deg, #A47148 0%, #8B5A2B 100%);
+}
+
+/* Nut Brown Buttons */
+.btn-nut-brown,
+.btn-primary {
+  background: linear-gradient(135deg, #A47148 0%, #8B5A2B 100%) !important;
+  color: #FFF8F0 !important;
+  border: none !important;
+}
+
+.btn-nut-brown:hover,
+.btn-primary:hover {
+  background: linear-gradient(135deg, #8B5A2B 0%, #6F3E1D 100%) !important;
+  color: #FFF8F0 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3);
+}
+
+/* Product Card Buttons */
+.product-card .btn,
+.add-to-cart-btn {
+  background: linear-gradient(135deg, #A47148 0%, #8B5A2B 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.product-card .btn:hover,
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #8B5A2B 0%, #6F3E1D 100%) !important;
+  transform: translateY(-2px);
+}
+
+/* Cart & Checkout Buttons */
+.cart-summary .btn,
+.checkout-form .btn,
+.order-summary .btn {
+  background: linear-gradient(135deg, #A47148 0%, #8B5A2B 100%) !important;
+  color: white !important;
+}
+
+/* Price Colors */
+.price,
+.item-subtotal,
+.item-price strong {
+  color: #A47148 !important;
+}
+
+/* Links */
+a:hover {
+  color: #A47148 !important;
+}
+
+/* Override Primary Color */
+.btn-primary,
+button[type="submit"],
+.checkout-btn,
+.place-order-btn {
+  background: linear-gradient(135deg, #A47148 0%, #8B5A2B 100%) !important;
+  border: none !important;
+  color: white !important;
+}
