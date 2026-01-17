@@ -17,17 +17,17 @@ const ImageUploader = ({ productId, onImagesChange }) => {
   };
 
   const handleFiles = (files) => {
+    // بس تحقق من الحجم - بدون تحقق من النوع
     const validFiles = files.filter(file => {
-      const isValid = file.type.startsWith('image/');
       const isUnder5MB = file.size <= 5 * 1024 * 1024;
-      return isValid && isUnder5MB;
+      return isUnder5MB;
     });
 
     if (validFiles.length !== files.length) {
       Swal.fire({
         icon: 'warning',
         title: 'Some Files Were Skipped',
-        text: 'Only images under 5MB are allowed.',
+        text: 'Only files under 5MB are allowed.',
         confirmButtonText: 'OK'
       });
     }
@@ -136,7 +136,7 @@ const ImageUploader = ({ productId, onImagesChange }) => {
         <FaUpload className="upload-icon" />
         <h3>Drag & Drop Images Here</h3>
         <p>or click to browse</p>
-        <span className="upload-note">PNG, JPG, GIF, WEBP (Max 5MB each)</span>
+        <span className="upload-note">All image formats (Max 5MB each)</span>
       </div>
 
       {/* Mobile Button - للموبايل */}
@@ -150,15 +150,15 @@ const ImageUploader = ({ productId, onImagesChange }) => {
           <span>Choose Images</span>
         </button>
         <p className="text-center text-muted mt-2 small">
-          PNG, JPG, GIF, WEBP (Max 5MB each)
+          All image formats supported (Max 5MB each)
         </p>
       </div>
 
-      {/* Hidden File Input */}
+      {/* Hidden File Input - بقبل كل شي */}
       <input
         ref={fileInputRef}
         type="file"
-        accept="image/*"
+        accept="*/*"
         multiple
         onChange={handleFileSelect}
         style={{ display: 'none' }}
