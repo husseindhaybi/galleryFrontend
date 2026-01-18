@@ -17,6 +17,7 @@ import RegisterPage from './pages/RegisterPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 
 
+
 // Admin Pages
 import AddProduct from './pages/admin/AddProduct';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -32,6 +33,7 @@ import UsersManagement from './pages/admin/UsersManagement';
 // Components
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
 
 
 import './styles/App.css';
@@ -54,6 +56,7 @@ function AppContent() {
 
   return (
     <div className="App">
+      <ScrollToTop />
 
       {!isAdminRoute && <Navbar />}
       
