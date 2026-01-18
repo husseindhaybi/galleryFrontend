@@ -14,6 +14,10 @@ import StarRating from '../components/StarRating';
 import { aiService, authService, cartService, productService } from '../services/api';
 
 const ProductDetailPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [reviews, setReviews] = useState([]);
